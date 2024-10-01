@@ -19,7 +19,7 @@ class NoteItem extends StatelessWidget {
               
               subtitle: Padding(
                 padding: const EdgeInsets.only(top: 16),
-                child: Text('Build your Career with tharwat samy', style: TextStyle(color: Colors.black.withOpacity(.4),fontSize: 18),),
+                child: Text('Build your Career with tharwat samy', style: TextStyle(color: Colors.black.withOpacity(.4),fontSize: 16),),
               ),
               trailing: IconButton(onPressed: (){}, icon:const Icon(Icons.delete_sharp , color: Colors.black,size: 30,)),
           ),
