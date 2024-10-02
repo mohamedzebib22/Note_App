@@ -8,25 +8,68 @@ class AddNoteBottomSheet extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return const Padding(
-      padding: const  EdgeInsets.symmetric(horizontal: 16),
+      padding:   EdgeInsets.symmetric(horizontal: 16),
       child: SingleChildScrollView(
-        child: Column(
-          children: [
-            SizedBox(height: 32,),
+        child: AddNoteForm(),
+      ),
+    );
+  }
+}
 
-            CustomTextFeild(hint: 'title',),
+class AddNoteForm extends StatefulWidget {
+  const AddNoteForm({
+    super.key,
+  });
 
-            SizedBox(height: 20,),
+  @override
+  State<AddNoteForm> createState() => _AddNoteFormState();
+}
 
-            CustomTextFeild(hint: 'content' , maxLines: 5,),
+class _AddNoteFormState extends State<AddNoteForm> {
 
-            SizedBox(height: 40,),
-
-            CustomButton(),
-
-            SizedBox(height: 16,)
-          ],
-        ),
+  final GlobalKey<FormState> formKey =GlobalKey();
+  AutovalidateMode autovalidateMode = AutovalidateMode.disabled;
+  String? title,subTitle;
+  @override
+  Widget build(BuildContext context) {
+    return Form(
+      key: formKey,
+      autovalidateMode: autovalidateMode,
+      child: Column(
+        children: [
+          SizedBox(height: 32,),
+      
+          CustomTextFeild(
+            onSaved: (value){
+              title = value;
+            },
+            hint: 'title',),
+      
+          SizedBox(height: 20,),
+      
+          CustomTextFeild(
+            onSaved: (value){
+              subTitle = value;
+            },
+            hint: 'content' , maxLines: 5,),
+      
+          SizedBox(height: 40,),
+      
+          CustomButton(
+            onTap: (){
+              if(formKey.currentState!.validate()){
+                formKey.currentState!.save();
+              }else{
+                autovalidateMode = AutovalidateMode.always;
+                setState(() {
+                  
+                });
+              }
+            },
+          ),
+      
+          SizedBox(height: 16,)
+        ],
       ),
     );
   }
