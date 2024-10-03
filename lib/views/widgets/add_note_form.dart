@@ -1,3 +1,5 @@
+import 'dart:developer';
+
 import 'package:cubit_form/cubit_form.dart';
 import 'package:flutter/material.dart';
 import 'package:note_app/cubits/add_note_cubit/add_note.dart';
@@ -50,6 +52,8 @@ class _AddNoteFormState extends State<AddNoteForm> {
 
                 var noteModel=NoteModel(title: title!, subtitle: subTitle!, date: DateTime.now().toString(), color: Colors.blue.value);
                 BlocProvider.of<AddNoteCubit>(context).addNote(noteModel);
+
+               
               }else{
                 autovalidateMode = AutovalidateMode.always;
                 setState(() {
