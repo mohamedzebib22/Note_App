@@ -15,7 +15,7 @@ class AddNoteBottomSheet extends StatelessWidget {
         child: BlocConsumer<AddNoteCubit, AddNoteCubitState>(
           listener: (context, state) {
             if (state is AddNoteCubitFailure) {
-              print('failed ${state.errMessage.toString()}');
+              debugPrint('failed ${state.errMessage.toString()}');
             }
 
             if (state is AddNoteCubitSucsess) {
@@ -30,7 +30,7 @@ class AddNoteBottomSheet extends StatelessWidget {
                     left: 16,
                     right: 16,
                     bottom: MediaQuery.of(context).viewInsets.bottom),
-                child: SingleChildScrollView(child: AddNoteForm()),
+                child:const SingleChildScrollView(child: AddNoteForm()),
               ),
             );
           },
