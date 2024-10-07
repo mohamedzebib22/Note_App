@@ -1,4 +1,4 @@
-part of 'notescubit_cubit.dart';
+part of 'notescubit.dart';
 
 @immutable
 abstract class NotescubitState {}
@@ -12,5 +12,5 @@ class NotescubitSucsess extends NotescubitState {
 class NotescubitFailure extends NotescubitState {
   final String errMessage;
 
-  NotescubitFailure({required this.errMessage});
+  NotescubitFailure(this.errMessage);
 }
